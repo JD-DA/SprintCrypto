@@ -1,4 +1,4 @@
-message="""%jGbnzkcvv jg bwbhtsa
+message="""Gbnzkcv jg bwbhtsa
 
 Ttg gbnzkcv kk pcumxgg mvz wbm vzchqzt tolfu qbljy eccwzgg l'zxkuqak
 kbkjxvoqak. Wbm vzchqzt fs kj mgbzj ésgh oéaéxczmbkph ljy uiquku rm auopzjy qi
@@ -66,20 +66,23 @@ k'gwhzjy ucvv.
 
 %nVcsjt
 
-Gb dzoew ca hksv béxkhé : ZUTWBWHJNSVJHOQCFYKGTCTT
-Hzzaxé giay n'oqkk fs llufs.nw ighbj lqwa-lo !"""
+Gb dzoew ca hksv béxkhé : ZUTWBWHJNSVJHOQCFYKGTCTT rtnunogdlenebmcuisisllnr trouvsan
+Trouvé sans l'aide de dcode.fr cette fois-ci !"""
+
+messageclair="En voici un bien mérité : rtnunogdlenebmcuisisllnr " \
+             "Trouvé sans l'aide de dcode.fr cette fois-ci !"
 
 from unicodedata import normalize
 
 
 def tolet(x):
     "transforme l'entier [x] en la [x]ième lettre majuscule (modulo 26)"
-    return chr(65 + x % 26)
+    return chr(97 + x % 26)
 
 
 def toint(c):
     "tranforme la lettre majuscule [c] en sa position dans l'alphabet (de 0 à 25)"
-    return ord(c) - 65
+    return ord(c) - 97
 
 
 def shift(c, d):
@@ -125,7 +128,12 @@ def calculICMoyen(textes):
 
 def nettoie(m):
     "nettoie la chaîne [m] en ne gardant que les lettres débarassées de leurs accents et passées en majuscules"
-    return ''.join([c for c in normalize('NFKD',m).upper().strip() if ord(c)>64 and ord(c)<91])
+    #return ''.join([c for c in normalize('NFKD',m).upper().strip() if ord(c)>64 and ord(c)<91])
+    texte=""
+    for i in m:
+        if(i.isalpha() and (64<ord(i)<91 or 96<ord(i)<123)):
+            texte+=i.lower()
+    return texte
 
 
 def trouveLeE(texte):
@@ -162,20 +170,40 @@ def chiffrementVigenere(texteClair,cle):
                 return chiffre
     return chiffre
 
-def constructionCleDechiffrement(cle):
-    return ''.join(tolet((26-toint(i))%26) for i in cle)
+def dechiffrementVigemost(texteCypher, cle):
+    clair =''
+    i = 0
+    while i<len(texteCypher):
+        for index in range(len(cle)):
+            if index == 2:
+                clair += chr(((ord(cle[index])-97)-(ord(texteCypher[i])-97))%26+97)
+            else:
+                clair +=chr(((ord(texteCypher[i])-97)-(ord(cle[index])-97))%26+97)
+            #clair+=shift(texteCypher[i], c)
+            i+=1
+            if not(i<len(texteCypher)):
+                return clair
+    return clair
 
-def remettreEnForme(textdechiffre,texts : list):
+def constructionCleDechiffrement(cle):
+    cledechiffrement=""
+    for i in range(len(cle)):
+        if i == 2:
+            cledechiffrement+=tolet((26+toint(cle[i]))%26)
+        else:
+            cledechiffrement+=tolet((26-toint(cle[i]))%26)
+    return cledechiffrement
+
+def remettreEnForme(textdechiffre,texts):
     letexte=""
     index=0
-    for i in texts:
-        for j in range(len(i)-1):
-            if(i[j].isalpha()):
-                letexte+=textdechiffre[index]
-                index+=1
-            else:
-                letexte+=i[j]
-        letexte+="\n"
+    for j in range(len(texts)-1):
+        if(i.isalpha() and 64<ord(j)<91 or 96<ord(j)<123):
+            letexte+=textdechiffre[index]
+            index+=1
+        else:
+            letexte+=i[j]
+    letexte+="\n"
     return letexte
 
 
@@ -192,7 +220,7 @@ if __name__ == "__main__":
     texte = nettoie(message)
     print(texte)
     n=1000
-    for i in range(1,4000):
+    for i in range(1,50):
         moyen = calculICMoyen(extraireSousTextes2(texte,i))
         #print(moyen," ",i)
         if(moyen>0.050):
@@ -201,37 +229,17 @@ if __name__ == "__main__":
     #reader.close()
     print(n)
 
-    #liste = extraireSousTextes2(texte,n)
-
-    #cle = constructionCle(calculerDecalages(liste))
-    #textedechiffre = chiffrementVigenere(texte,constructionCleDechiffrement(cle))
-
-    #print(remettreEnForme(textedechiffre,txt))
+    #nouvelle approche : trouver la page wikipedia
 
 
 
+    liste = extraireSousTextes2(texte,n)
 
+    texte=texte[19:]
+    cle = "oingc"
+    print(cle)
+    textedechiffre = dechiffrementVigemost(texte,cle)
+    print(texte)
+    print(textedechiffre)
 
-
-
-"""
-
-def traduction(text,num):
-    textTraduit = ''
-    for i in text:
-        if (i.islower() and i.isalpha()):
-            textTraduit += chr(97 + (ord(i) - num - 97) % 26)
-        elif (not (i.islower()) and i.isalpha()):
-            textTraduit += chr(65 + (ord(i) - num - 65) % 26)
-        else:
-            textTraduit += i
-    return textTraduit
-
-
-
-if __name__ == '__main__':
-    for i in (range(27)):
-        #print(traduction(message,i)[:20])
-        pass
-
-    print(message.translate(str.maketrans('', 'letokenest')))"""
+    print(remettreEnForme(textedechiffre,message))
