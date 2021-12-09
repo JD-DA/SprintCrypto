@@ -1,7 +1,7 @@
 from sys import argv,stdin
 from PIL import Image, ImageDraw, ImageFont
 
-file_name = "cake"
+file_name = "part2/img_1"
 img = Image.open(f"{file_name}.png")
 width,height = img.size
 
