@@ -56,7 +56,7 @@ def get_chunck(byte: bytes):
 
 bytes = b""
 
-with open("ecran.png", "rb") as file:
+with open("./part2/img_1.png", "rb") as file:
     for line in file.readlines():
         bytes += line
 
