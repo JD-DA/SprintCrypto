@@ -1,0 +1,24 @@
+2021-12-09 09:56:09,850 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:56:09,850 INFO Fin du traitement.
+2021-12-09 09:56:55,122 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+Traceback (most recent call last):
+  File "filters/raseac", line 7, in <module>
+    phaal = alpha[2:] - alpha[:2]
+TypeError: unsupported operand type(s) for -: 'str' and 'str'
+2021-12-09 09:57:17,203 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+Traceback (most recent call last):
+  File "filters/raseac", line 7, in <module>
+    phaal = alpha[2:] - alpha[:4]
+TypeError: unsupported operand type(s) for -: 'str' and 'str'
+2021-12-09 09:57:22,903 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:57:22,913 INFO Fin du traitement.
+2021-12-09 09:57:57,822 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:57:57,822 INFO Fin du traitement.
+2021-12-09 09:58:54,010 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:58:54,011 INFO Fin du traitement.
+2021-12-09 09:59:46,010 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:59:46,011 INFO Fin du traitement.
+2021-12-09 09:59:58,819 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 09:59:58,820 INFO Fin du traitement.
+2021-12-09 10:00:43,088 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-09 10:00:43,088 INFO Fin du traitement.

@@ -1,4 +1,6 @@
 import base64
+from PIL import Image
+from numpy import asarray
 
 message="""Zbiqlja: A'lz vù ???
 Myvt: Hspjl
@@ -45,7 +47,7 @@ def traduction(text,num):
 
 if __name__ == '__main__':
 
-    print(traduction(message, 7))
+    #print(traduction(message, 7))
 
     reader = open("messageAlice.txt", "r")
     writer = open("tram.png", "w+b", )
@@ -53,12 +55,14 @@ if __name__ == '__main__':
     texteComplet=""
     for line in txt:
         texteComplet+=line
-    pdfText=traduction(texteComplet,7)
-#    pdfText=texteComplet
+    #pdfText=traduction(texteComplet,7)
+#   pdfText=texteComplet
+    decodedTxt = base64.b64decode(texteComplet)
+    print(len(decodedTxt))
 
-    base64_bytes = pdfText.encode()
-    message_bytes = base64.b64decode(base64_bytes + b'==')
-    writer.write(message_bytes)
+    #base64_bytes = pdfText.encode()
+    #message_bytes = base64.b64decode(base64_bytes + b'==')
+    #writer.write(message_bytes)
     reader.close()
     writer.close()
 

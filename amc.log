@@ -1,0 +1,12 @@
+2021-12-09 09:25:50,953 The Ancient Machine Codex is serving content at http://localhost:6473/
+2021-12-09 09:25:50,954 Launching browser to open http://localhost:6473/instructions
+2021-12-09 09:25:51,974 "GET /instructions HTTP/1.1" 200 -
+2021-12-09 09:25:59,780 "GET /help/help HTTP/1.1" 404 -
+2021-12-09 09:25:59,977 "GET /favicon.ico HTTP/1.1" 404 -
+2021-12-09 09:47:18,745 The Ancient Machine Codex is serving content at http://localhost:6473/
+2021-12-09 09:47:18,745 Launching browser to open http://localhost:6473/instructions
+2021-12-09 09:47:22,189 "GET /instructions HTTP/1.1" 200 -
+2021-12-09 09:47:24,575 "GET /help/help HTTP/1.1" 200 -
+2021-12-09 09:52:50,923 "GET /data/bateau HTTP/1.1" 200 -
+2021-12-09 09:53:06,136 "GET /data/bateau HTTP/1.1" 200 -
+2021-12-09 09:53:13,463 "GET /help/tuto HTTP/1.1" 200 -
