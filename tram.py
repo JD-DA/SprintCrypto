@@ -1,6 +1,6 @@
 from typing import List, Union, Any
 from Crypto.Util.strxor import strxor
-from PIL import Image
+from PIL import Image, ExifTags
 import numpy as np
 
 class Color:
@@ -53,8 +53,10 @@ def get_all_rgb_component(image: List[List[List[int]]]) -> List[int]:
 def get_lower_bits(bytes: bytes) -> int:
     return [byte & 1 for byte in bytes]
 
-image = Image.open("tram.png")
+image = Image.open("cake.png")
 image = np.array(image)
+
+print(image[0][0])
 pixels = get_pixel_of_image(image)
 red_pixels, green_pixels, blue_pixels = get_all_rgb_component(image)
 hash_red = bytes(red_pixels)
@@ -62,6 +64,8 @@ hash_green = bytes(green_pixels)
 hash_blue = bytes(blue_pixels)
 rgb_pixels = []
 
+
+"""
 for pixel in pixels:
     rgb_pixels.append(pixel.color.red)
     rgb_pixels.append(pixel.color.green)
@@ -79,6 +83,7 @@ for i in range(0, len(lower), 8):
 for binary in binaries:
     if binary != "11111111":
         print(chr(int(binary, 2)), end="")
+"""
 
 
 
