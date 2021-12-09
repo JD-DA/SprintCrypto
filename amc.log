@@ -302,3 +302,5 @@
 2021-12-09 15:50:53,134 "GET /data/amc.png HTTP/1.1" 200 -
 2021-12-09 15:51:05,530 "GET /e90aa80e7a7d550fca554cfc3f88b926/classico/emojis?fruit HTTP/1.1" 200 -
 2021-12-09 15:51:05,793 "GET /data/amc.png HTTP/1.1" 200 -
+2021-12-09 17:28:04,141 "GET /instructions HTTP/1.1" 200 -
+2021-12-09 17:28:04,436 "GET /data/amc.png HTTP/1.1" 200 -
