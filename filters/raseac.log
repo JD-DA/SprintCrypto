@@ -22,3 +22,4 @@ TypeError: unsupported operand type(s) for -: 'str' and 'str'
 2021-12-09 09:59:58,820 INFO Fin du traitement.
 2021-12-09 10:00:43,088 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
 2021-12-09 10:00:43,088 INFO Fin du traitement.
+/bin/sh: 1: filters/raseac: Permission denied
