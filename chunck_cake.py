@@ -43,7 +43,7 @@ def get_chunck(byte: bytes):
         if(types==b"IEND"):
             break
         if(types==b"caKe"):
-            print(base64.b64decode(payload).decode('utf-8'))
+            print(payload)
 
 
     
@@ -54,7 +54,7 @@ def get_chunck(byte: bytes):
 
 bytes = b""
 
-with open("tram.png", "rb") as file:
+with open("ecran.png", "rb") as file:
     for line in file.readlines():
         bytes += line
 
