@@ -29,35 +29,50 @@ if __name__ == "__main__":
 
     blue_image = numpydata.copy()  # Make a copy
 
+
     for i in range(3):
-        imageBlue = blue_image[:, :, i]
-        imageBleu = Image.fromarray(imageBlue)
-        imageBleu.save("imagetest"+str(i)+".png")
-    imageBlue=imageBlue.reshape(-1)
-    dataFinal=[i%(pow(2,4)) for i in imageBlue]
-    print(dataFinal[:20])
-    print(len(dataFinal))
+        imageBlue2 = blue_image[:, :, i]
+        imageBleu = Image.fromarray(imageBlue2)
+        imageBleu.save("imagetest" + str(i) + ".png")
+        imageBlue2 = imageBlue2.reshape(-1)
+        dataFinal = [i % (pow(2, 4)) for i in imageBlue2]
+        print(dataFinal[:20])
+        print(len(dataFinal))
+        """
+        bin_data = struct.pack('<H', 824)
+        print('bin_data length:', len(bin_data), bin_data)"""
+        octalData = []
+        for j in range(0, len(dataFinal), 2):
+            octalData.append(dataFinal[j] * pow(2, 4) + dataFinal[j + 1])
+        print(octalData[:20])
+        bytesData = tableToBytes(octalData)
+        print(bytesData[:200])
+        writeInBinaryFile(bytesData, fileDir="./reponse" + str(i) + ".txt")
 
+    """
+        i,j,v=numpydata.shape
+        print(i,j)
+        for row in range(i):
+            print(row)
+            for col in range(j):
+                #print(imageBlue[row][col])
+                #print(pixel[0]^pixel[1])
+                numpydata[row][col][0]=numpydata[row][col][0]^numpydata[row][col][1]^numpydata[row][col][2]
+                numpydata[row][col][1]=0
+                numpydata[row][col][2]=0
+        imageBleu.save("imageXor.png")
+        print(numpydata)
+        print(numpydata[row][col][0])
+        bytesData = tableToBytes(octalData)
+        key = 'LACRYPTOGRAPHIECESTLAVIE!CESTTOP'.encode()
 
-
-
-    bin_data = struct.pack('<H', 824)
-    print('bin_data length:', len(bin_data),bin_data)
-    octalData=[]
-    for i in range(0,len(dataFinal),2):
-        octalData.append(dataFinal[i]*pow(2,4)+dataFinal[i+1])
-    print(octalData[:20])
-
-    bytesData = tableToBytes(octalData)
-    key = 'LACRYPTOGRAPHIECESTLAVIE!CESTTOP'.encode()
-
-    iv, data = splitIV(bytesData, 16)
-    packIV = tableToBytes(iv)
-    packData = tableToBytes(data)
-"""
-    cipher = AES.new(key, AES.MODE_CBC, packIV)
-    dataDecrypt = cipher.decrypt(packData)
-    writeInBinaryFile(dataDecrypt)"""
+        iv, data = splitIV(bytesData, 16)
+        packIV = tableToBytes(iv)
+        packData = tableToBytes(data)
+        cipher = AES.new(key, AES.MODE_CBC, packIV)
+        dataDecrypt = cipher.decrypt(packData)
+        writeInBinaryFile(dataDecrypt)
+    """
 
 
 
