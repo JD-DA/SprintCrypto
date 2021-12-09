@@ -96,9 +96,7 @@ def unshift(c, d):
 def extraireSousTextes2(m,k):
     lesTextes = [""]*k
     for i in range(len(m)):
-        if i % 2 == 0:
-            lesTextes[i % k] += m[i]
-        
+        lesTextes[i%k]+=m[i]
     return lesTextes
 
 def ic(freq):
@@ -106,11 +104,10 @@ def ic(freq):
     icSum=0
     for x in freq:
         nx=freq[x]  # nombre d'occurences du caractère x
-        n += nx
+        n=n+nx
         icSum+= nx*(nx-1)
-    if (n * (n - 1)) != 0:
-        return icSum/(n*(n-1))
-    return 0
+    ic = icSum/(n*(n-1))
+    return ic
 
 
 def calculICMoyen(textes):
@@ -161,7 +158,7 @@ def chiffrementVigenere(texteClair,cle):
             ##chiffre+=tolet((toint(texteClair[i])+toint(c))%26)
             chiffre+=shift(texteClair[i],c)
             i+=1
-            if i >= len(texteClair):
+            if not(i<len(texteClair)):
                 return chiffre
     return chiffre
 
@@ -195,12 +192,12 @@ if __name__ == "__main__":
     texte = nettoie(message)
     print(texte)
     n=1000
-    for i in range(1,40):
+    for i in range(1,4000):
         moyen = calculICMoyen(extraireSousTextes2(texte,i))
-        if(moyen>0.070):
+        #print(moyen," ",i)
+        if(moyen>0.050):
             n = min(i,n)
             print(moyen," ",i)
-            
     #reader.close()
     print(n)
 
