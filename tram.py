@@ -43,7 +43,7 @@ def get_all_rgb_component(image: List[List[List[int]]]) -> List[int]:
     red_pixels, green_pixels, blue_pixels = [], [], []
 
     for row in image:
-        for red, green, blue in row:
+        for red, green, blue, _ in row:
             red_pixels.append(red)
             green_pixels.append(green)
             blue_pixels.append(blue)
@@ -53,7 +53,11 @@ def get_all_rgb_component(image: List[List[List[int]]]) -> List[int]:
 def get_lower_bits(bytes: bytes) -> int:
     return [byte & 1 for byte in bytes]
 
-image = Image.open("cake.png")
+
+def get_cake_chunck(img):
+    pass
+
+image = Image.open("rouble.png")
 image = np.array(image)
 
 print(image[0][0])
@@ -65,25 +69,19 @@ hash_blue = bytes(blue_pixels)
 rgb_pixels = []
 
 
-"""
 for pixel in pixels:
     rgb_pixels.append(pixel.color.red)
     rgb_pixels.append(pixel.color.green)
     rgb_pixels.append(pixel.color.blue)
+    rgb_pixels.append(pixel.color.alpha)
 
 rgb_pixels = bytes(rgb_pixels)
 lower = get_lower_bits(rgb_pixels)
 lower = "".join(str(l) for l in lower)
 
-binaries = []
+with open("mask_rouble.txt", "w+") as file:
+    file.write(lower)
 
-for i in range(0, len(lower), 8):
-    binaries.append(lower[i:i+8].zfill(8))
-
-for binary in binaries:
-    if binary != "11111111":
-        print(chr(int(binary, 2)), end="")
-"""
 
 
 

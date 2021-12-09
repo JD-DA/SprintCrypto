@@ -96,7 +96,9 @@ def unshift(c, d):
 def extraireSousTextes2(m,k):
     lesTextes = [""]*k
     for i in range(len(m)):
-        lesTextes[i%k]+=m[i]
+        if i % 2 == 0:
+            lesTextes[i % k] += m[i]
+        
     return lesTextes
 
 def ic(freq):
@@ -104,10 +106,11 @@ def ic(freq):
     icSum=0
     for x in freq:
         nx=freq[x]  # nombre d'occurences du caractère x
-        n=n+nx
+        n += nx
         icSum+= nx*(nx-1)
-    ic = icSum/(n*(n-1))
-    return ic
+    if (n * (n - 1)) != 0:
+        return icSum/(n*(n-1))
+    return 0
 
 
 def calculICMoyen(textes):
@@ -140,21 +143,14 @@ def trouveLeE(texte):
 
 
 def calculerDecalage(texte):
-    resultat = (toint(trouveLeE(texte)) - toint('E')) % 26
-    return resultat
+    return (toint(trouveLeE(texte)) - toint('E')) % 26
 
 
 def calculerDecalages(textes):
-    resultat = []
-    for i in textes:
-        resultat.append(calculerDecalage(i))
-    return resultat
+    return [calculerDecalage(i) for i in textes]
 
 def constructionCle(decalages):
-    cle=''
-    for i in decalages:
-        cle+=(tolet(i))
-    return cle
+    return ''.join((tolet(i)) for i in decalages)
 
 def chiffrementVigenere(texteClair,cle):
     texteClair=''.join([x for x in texteClair if x.isalpha()]).upper()
@@ -165,15 +161,12 @@ def chiffrementVigenere(texteClair,cle):
             ##chiffre+=tolet((toint(texteClair[i])+toint(c))%26)
             chiffre+=shift(texteClair[i],c)
             i+=1
-            if not(i<len(texteClair)):
+            if i >= len(texteClair):
                 return chiffre
     return chiffre
 
 def constructionCleDechiffrement(cle):
-    cleResultat=''
-    for i in cle:
-        cleResultat+=tolet((26-toint(i))%26)
-    return cleResultat
+    return ''.join(tolet((26-toint(i))%26) for i in cle)
 
 def remettreEnForme(textdechiffre,texts : list):
     letexte=""
@@ -204,10 +197,10 @@ if __name__ == "__main__":
     n=1000
     for i in range(1,40):
         moyen = calculICMoyen(extraireSousTextes2(texte,i))
-        print(moyen," ",i)
         if(moyen>0.070):
             n = min(i,n)
             print(moyen," ",i)
+            
     #reader.close()
     print(n)
 
