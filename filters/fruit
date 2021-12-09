@@ -3,8 +3,47 @@ from filter import *
 
 log(f"Démarrage. Invoqué depuis { url }")
 
-fruit = "🍎🥝🍊🥭🍈🍑🍐🧄🍓🥦🌽🥬🥑🍉🥔🍅🥕🌶🍒🥥"
-transform = "etsphroylifcugvdnmb"
+correspondance = {
+    "🍎": "a",
+    "🥝": "e",
+    "🍊": "t",
+    "🥭": "s",
+    "🍈": "p",
+    "🍑": "h",
+    "🍐": "r",
+    "🧄": "o",
+    "🍓": "y",
+    "🥦": "l",
+    "🌽": "i",
+    "🥬": "f",
+    "🥑": "c",
+    "🍉": "u",
+    "🥔": "g",
+    "🍅": "v",
+    "🥕": "d",
+    "🌶": "n",
+    "🍒": "m",
+    "🥥": "b",
+    "🍋": "z",
+    "🍆": "k",
+    "🥒": "w",
+    "🍇": "j",
+    "🧅": "q",
+    "🍏": "x",
+    "🐼": "1",
+    "🐻": "3",
+    "🐶": "7",
+    "🦁": "8",
+    "🐹": "0",
+    "🐯": "2",
+    "🦊": "6",
+    "🐭": "5",
+    "🐰": "4",
+    "🐱": "9"
+}
+
+fruit = "".join(list(correspondance.keys()))
+transform = "".join(list(correspondance.values()))
 cesar = str.maketrans(fruit, transform)
 
 for line in input:
