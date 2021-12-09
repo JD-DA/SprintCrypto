@@ -44,6 +44,8 @@ def get_chunck(byte: bytes):
             break
         if(types==b"caKe"):
             print(payload)
+            for i in payload:
+                print(bytes.fromhex(i))
 
 
     
