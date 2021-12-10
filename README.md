@@ -1,5 +1,7 @@
 # 🏃 Sprint Cryptographie 🏃
 
+/!\ ordre chronologique douteux ... /!\
+
 7h20 ⏰ le réveil sonne, on se brosse les dents on s'habille en deux deux et direction le sprint de crypto. Après 30 minute de tram on arrives a la FAC d'Orléans. 8h00 😴, un jolie chiffre l'heure d'arrivée a la FAC mais aussi la durée de sommeil cumulé des trois participant de l'équipe Lauriot ... 
 
 On pose nos affaires et la coup dur, ou plutôt merveille problèmes git suivie de problème de config. Un moment de répis pour prendre notre meilleur café ☕
@@ -77,4 +79,6 @@ correspondance = {
     "🐱": "9"
 }
 ```
+
+vendredi matin, rebelote notre sommeil n'as pas était en s'arrangeant. Surprise la machine a café ne sert pas de latté caramel.
 
