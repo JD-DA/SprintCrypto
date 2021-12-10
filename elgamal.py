@@ -1,3 +1,15 @@
+import base64
+
+matrice=[
+    [0,1,2,3,4,5,6,7,8,9],
+    ["A","B","C","D","E","F","G","H","I","J"],
+    ["K","L","M","N","O","P","Q","R","S","T"],
+    ["U","V","W","X","Y","Z","a","b","c","d"],
+    ["e","f","g","h","i","j","k","l","m","n"],
+    ["o","p","q","r","s","t","u","v","w","x"],
+    ["y","z","<",">"]
+
+]
 def power(a, b, c):
     x = 1
     y = a
@@ -50,11 +62,21 @@ if __name__ == "__main__":
     ec1 = int(ec1, 2)
     es = int(es, 2)
     n = int(n, 2)
-
+    print(ec2)
+    print(ec1)
+    print(len(str(ec2)))
     print(es)
-    #decrypt = ec2 / ec1**(es)
-    decryptN = exponentionRapide(ec1,es,n)
-    print(ec2/decryptN)
+    print(n)
+
+
+    #chiffre = pow(exponentionRapide(ec1,es,n),-1,n)*ec2%n
+    chiffre = pow(pow(ec1, es, n), -1, n) * ec2 % n
+    assert chiffre == pow(exponentionRapide(ec1,es,n),-1,n)*ec2%n
+    print("le chiffre")
+    print(chiffre)
+    print(pow(exponentionRapide(ec1,es,n),-1,n)*ec2%n)
+    print(len(str(chiffre)))
+    print(chiffre.to_bytes(128,'big').decode('ascii'))
     """decryptique = decrypt([ec2],ec1,es,n)
     print(decryptique)
     print(len(decryptique))
