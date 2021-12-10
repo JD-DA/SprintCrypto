@@ -47,6 +47,12 @@
 #
 import struct
 
+PADDING = [
+    128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 
+]
 
 class MD4:
     """An implementation of the MD4 hash algorithm."""
@@ -145,6 +151,14 @@ class MD4:
         return lbits | rbits
 
 
+def padding(msg):
+    msg = [byte for byte in msg]
+    msglen = len(msg)
+    index = msglen % 64
+    msg = msg + PADDING[:56-index] if index < 56 else msg + PADDING[:120-index]
+    return msg
+
+
 def main():
     # Import is intentionally delayed.
     import sys
@@ -166,6 +180,7 @@ def main():
 
         for message, expected in zip(messages, known_hashes):
             print("Message: ", message)
+            print("padding:", padding(message))
             print("Expected:", expected)
             print("Actual:  ", MD4(message).hexdigest())
             print()
