@@ -1,0 +1,7 @@
+Chacun de ces tableaux contient une archive au format 7z,
+ à extraire avec l'outil du même nom. Cependant, chaque
+ archive est protégée par un mot de passe.Pour ne pas
+ oublier tous ces mots de passe, nous les avons stockés
+ sur le web, comme ceci :
+ https://pdicost.univ-orleans.fr/cryptodm/micpass.php?user=Lauriot&login=7z&apikey=1f3c7ef21efb589150620c0e1956d0a7
+ Pour une image nommée zinzolin, il faut utiliser l'URL avec le champ login égal à zinzolin.
