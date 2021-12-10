@@ -56,7 +56,7 @@ def get_chunck(byte: bytes):
 if __name__ == "__main__":
     bytes = b""
 
-    with open("./part3/allgame.png", "rb") as file:
+    with open("allgame.png", "rb") as file:
         for line in file.readlines():
             bytes += line
 

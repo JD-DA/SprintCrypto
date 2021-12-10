@@ -21,7 +21,7 @@ if __name__ == '__main__':
     #print(traduction(message, 7))
 
     reader = open("img.txt", "r")
-    writer = open("allgame.png", "w+b", )
+    writer = open("../allgame.png", "w+b", )
     txt = reader.readlines()
     texteComplet=""
     for line in txt:

@@ -1,0 +1,9 @@
+Alice : y=<900bits>
+g=2
+n=900bits
+
+Bob à un message pour Alice
+Dave : Ou est charlie ? je crois qu'il est a l'aquaponey
+Eve : fausse clé : y 900bits
+    apporte là à bob, elle correspond au secret !
+    s = 900 bit
