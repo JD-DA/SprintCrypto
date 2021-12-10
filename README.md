@@ -105,6 +105,8 @@ def get_chunck(byte: bytes) -> List[chunck]:
 
 Heureusement qu'on la fini qui sais ce qui aurais pu nous arriver ... 😅
 
+Grâce à cela on n'as pu comprendre que tout le monde ment (c'est pas le Dr House qui nous contrediras)
+
 vendredi matin, rebelote notre sommeil n'as pas était en s'arrangeant. Surprise la machine a café ne sert pas de latté caramel.
 En arrivant à 8h du matin nous avons donc ocmmecncé notre fière journée en lisant nos mails et quelle ne fut pas notre surprise de découvrir, un mail nous souhaitant une bonne journée, accompagnée d'une douce musique nous permettant de découvrir le premier token de la journée encodée en base64 
 
