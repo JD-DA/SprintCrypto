@@ -1,7 +1,3 @@
-alice: J'ai eu une idée lumineuse cette nuit, ça va révolutionner la crypto.
-bob: Ah bon ? Tu es sûre... parce que la dernière fois ça s'est mal terminé...
-alice: Mais oui, plutôt que tous ces trucs compliqués je mélange TOTP avec MT19937 : random.Random
-alice:
 from random import Random
 from hashlib import sha256
 from datetime import datetime
@@ -79,8 +75,3 @@ def recv_bob(s):
    mask=gimme(kab,n)
    data=strxor(msg,mask)
    return data
-
-
-
-bob: Dans la doc il y a écrit « Avertissement Les générateurs pseudo-aléatoires de ce module ne doivent pas être utilisés à des fins de sécurité. »
-alice: Ah ?
