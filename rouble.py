@@ -41,12 +41,11 @@ def digits(l):
             if m==100:
                 raise ValueError("stucked")
 
-howmany = 200
+howmany = 20
 seed = 0
 regsize = 16
-tap1 = 4
-tap2 = 13
-tap3 = 3
+#tap1 = 4
+#tap2 = 13
 
 def usage(howmany, seed, regsize, tap1, tap2):
     x=lfsr(regsize, *[tap1, tap2])
@@ -60,13 +59,26 @@ def usage(howmany, seed, regsize, tap1, tap2):
             c=''
     return(''.join(l))
 
-while seed < 70000000:
-    values = usage(howmany, seed, regsize, tap1, tap2)
-    if (str(values)[:19] == '0566738888742956805'):
-        with open("lfsr3.txt", "a") as f:
-            f.write(values)
-            f.write('\n')
-            print('bingo')
-    if (seed%1000 == 0):
-        print(seed)
-    seed += 1
+def tester(howmany, regsize, tap1, tap2):
+    seed = 0
+    while seed <= (66000):
+        values = usage(howmany, seed, regsize, tap1, tap2)
+        if (str(values)[:19] == '3265253044256225854'):
+            with open("lfsr3.txt", "a") as f:
+                f.write(values)
+                f.write('\n')
+                print('bingo')
+                print(tap1, tap2)
+            exit(0)
+        if (seed%1000 == 0):
+            print(seed)
+        seed += 1
+
+tester(400, regsize, 10, 13)
+"""
+for i in range(0, 16):
+    for j in range(i, 16):
+        if i != j:
+            print(f"tap1 = {i}, tap2 = {j} \n")
+            tester(howmany, regsize, i, j)
+"""

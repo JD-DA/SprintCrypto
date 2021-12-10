@@ -43,3 +43,5 @@ TypeError: unsupported operand type(s) for -: 'str' and 'str'
 2021-12-10 14:58:50,385 INFO Fin du traitement.
 2021-12-10 14:58:50,432 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac|raesac|raesac|raesac&alt=caesar
 2021-12-10 14:58:50,432 INFO Fin du traitement.
+2021-12-10 16:49:12,641 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-10 16:49:12,641 INFO Fin du traitement.
