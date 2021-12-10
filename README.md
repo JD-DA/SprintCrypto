@@ -1,52 +1,43 @@
-# Sprint Cryptographie
+# 🏃 Sprint Cryptographie 🏃
 
-nom de code : Lauriot
+7h20 ⏰ le réveil sonne, on se brosse les dents on s'habille en deux deux et direction le sprint de crypto. Après 30 minute de tram on arrives a la FAC d'Orléans. 8h00 😴, un jolie chiffre l'heure d'arrivée a la FAC mais aussi la durée de sommeil cumulé des trois participant de l'équipe Lauriot ... 
 
-## chiffrement historique:
+On pose nos affaires et la coup dur, ou plutôt merveille problèmes git suivie de problème de config. Un moment de répis pour prendre notre meilleur café ☕
 
-Premier chiffrement: Vigenere
-Source utilisée pour le décodé: (decode)[https://www.dcode.fr/vigenere-cipher]
+Problèmes résolu enfin prêt à commencer, directions les problèmes historique comme si nos problèmes de sommeil n'était pas suffisant, on commence par une attaque gratuite, on nous rappel notre levée difficle, et ensuite on nous parle de notre rêve un lit certe en désordre mais un lit tout de même. Est la soudain un écran d'ordinateur avec un texte qui ressemble a tout sauf du français, encore une personne qui as trop abuser des boissons la veilles 🍺 Et après c'est à des pauvre étudiant en manque de sommeil de rattraper les bêtise de monsieur, je vous félicite pas ... bon coup de chance c'était un code ceasar plutôt simple à déchiffrer. 
 
-```
-Subject: T'es on ???
-From: Alice
-To: Lauriot
-Date: Thu, 09 Dec 2021 08:15:00 +0100
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1133673754986327044=="
+Oh une image avec les arrêts de la ligne A du tram, c'est gentils de penser a comment nous allons pouvoir rentrer. Quelque chose me dit qu'il y'a quelque chose dans cette image ...
 
---===============1133673754986327044==
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+![tram img](public/tram.png)
+![tram img](public/tram_red.png)
 
-Salut,
+Hmmm ...
 
-Tu sais qu'il y a SPRINT de crypto ce matin ?
+![houston help](public/houston.png)
 
-On t'attend en E09, magne-toi ! Y a des tokens t trouver !
+Abort the mission ! Si c'est l'image qui le dit ont va pas la contredire, en plus on est fatiguer je rappel il ne faudrais pas trop travailler 🥱
 
-De chez toi, le plus simple est de prendre le tramway A
-jusqu't l'arrxt %lparcfloral:Parc Floral%n, je te mets un
-plan en pixce-jointe, ce sera pas du luxe...
+Bon et si on aller ce promener dans le batiment 3IA ... Trop bien un QrCode 😮
 
-Allez, t tout de suite !
-Alice
+[![qrCode](public/ecran.png)](https://www.youtube.com/watch?v=iik25wqIuFo)
 
---===============1133673754986327044==
-Content-Type: image/png
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="tram.png"
-MIME-Version: 1.0
-```
+On avais du temps a perdre du coup on as coder un super truc si vous cliquer sur le Qr 😉
 
-Image parc floral:
-```
-QMEGGGMS, QMEGGGMS, 
-```
+On dirais qu'il y'a pas de token ici non plus 😥 
 
+bon c'était marrant de ce promener mais retour en E09 pour travailler, on commence à avoir faim ça creuse de marcher.
 
-Un message Fruité
-```
+![faim](public/faim.gif)
+
+heureusement on as eu un buffet avec pas mal de fruit
+
+```py
+msg = """
+🥦🥝 🥬🧄🍐🍒🍎🍊 🍈🌶🥔 🥝🥭🍊 🍊🍐🥝🥭 🥬🍎🥑🌽🥦🥝 🍎 🍒🍎🌶🌽🍈🍉🥦🥝🍐. 🌽🥦 🥭🍉🥬🥬🌽🍊 🥕🥝 🥦🌽🍐🥝 🥦🍎 🍐🥬🥑 🐯🐹🦁🐻
+🍈🧄🍉🍐 🥭'🥝🌶 🥑🧄🌶🍅🍎🌽🌶🥑🍐🥝
+...
+"""
+
 correspondance = {
     "🍎": "a",
     "🥝": "e",
@@ -67,6 +58,23 @@ correspondance = {
     "🥕": "d",
     "🌶": "n",
     "🍒": "m",
-    "🥥": "b"
+    "🥥": "b",
+    "🍋": "z",
+    "🍆": "k",
+    "🥒": "w",
+    "🍇": "j",
+    "🧅": "q",
+    "🍏": "x",
+    "🐼": "1",
+    "🐻": "3",
+    "🐶": "7",
+    "🦁": "8",
+    "🐹": "0",
+    "🐯": "2",
+    "🦊": "6",
+    "🐭": "5",
+    "🐰": "4",
+    "🐱": "9"
 }
 ```
+

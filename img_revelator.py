@@ -1,7 +1,7 @@
 from sys import argv,stdin
 from PIL import Image, ImageDraw, ImageFont
 
-file_name = "rouble"
+file_name = "tram"
 img = Image.open(f"{file_name}.png")
 width,height = img.size
 
@@ -12,7 +12,7 @@ rgb = Image.new('L', (width, height), color=255)
 
 for row in range(height):
     for col in range(width):
-        (r,g,b, _)= img.getpixel((col, row))
+        (r,g,b)= img.getpixel((col, row))
         red.putpixel((col, row), 255 * (r % 2))
         green.putpixel((col, row), 255 * (g % 2))
         blue.putpixel((col, row), 255 * (b % 2))
