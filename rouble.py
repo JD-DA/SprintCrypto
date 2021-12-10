@@ -41,19 +41,32 @@ def digits(l):
             if m==100:
                 raise ValueError("stucked")
 
-if __name__ == '__main__':
-    if len(argv) < 5:
-        print(f"usage: {argv[0]} how_many_digits seed regsize tap1 tap2 ... tapN")
-        exit(1)
-    nargs=[int(x) for x in  argv[1:]]
-    x=lfsr(nargs[2], *nargs[3:])
-    x.seed(nargs[1])
+howmany = 200
+seed = 0
+regsize = 16
+tap1 = 4
+tap2 = 13
+tap3 = 3
+
+def usage(howmany, seed, regsize, tap1, tap2):
+    x=lfsr(regsize, *[tap1, tap2])
+    x.seed(seed)
     l=[]
     c=''
-    for d in islice(digits(x), nargs[0]):
+    for d in islice(digits(x), howmany):
         c+=str(d)
         if len(c)==5:
             l.append(c)
             c=''
-    print(' '.join(l))
+    return(''.join(l))
 
+while seed < 70000000:
+    values = usage(howmany, seed, regsize, tap1, tap2)
+    if (str(values)[:19] == '0566738888742956805'):
+        with open("lfsr3.txt", "a") as f:
+            f.write(values)
+            f.write('\n')
+            print('bingo')
+    if (seed%1000 == 0):
+        print(seed)
+    seed += 1
