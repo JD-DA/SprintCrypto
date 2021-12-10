@@ -82,6 +82,27 @@ correspondance = {
 
 Une documentation sur comment obtenir les chunck 😮, avec une menace de mort si ont ne code pas l'utilitaire qui permet de les récupéré 😨 
 
+```py
+
+# fonction non contractuelle modifier lors de l'écriture du readme sans la tester pour faire "plus propre"
+
+def get_chunck(byte: bytes) -> List[chunck]:
+    chuncks = []
+    byte = remove_png_header(byte)
+    
+    while True:
+        length, byte = get_chunck_length(byte)
+        types, byte = get_chunck_type(byte)
+        payload, byte = get_chunck_payload(byte, length)
+        crc, byte = get_chunck_crc(byte)
+        chuncks.append(Chunck(length, types, payload, crc))
+        
+        if(types==b"IEND"):
+            break
+    
+    return chuncks
+```
+
 vendredi matin, rebelote notre sommeil n'as pas était en s'arrangeant. Surprise la machine a café ne sert pas de latté caramel.
 En arrivant à 8h du matin nous avons donc ocmmecncé notre fière journée en lisant nos mails et quelle ne fut pas notre surprise de découvrir, un mail nous souhaitant une bonne journée, accompagnée d'une douce musique nous permettant de découvrir le premier token de la journée encodée en base64 
 
