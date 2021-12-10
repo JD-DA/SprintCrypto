@@ -389,3 +389,9 @@
 2021-12-10 08:53:26,061 Launching browser to open http://localhost:6473/instructions
 2021-12-10 08:53:27,511 "GET /instructions HTTP/1.1" 200 -
 2021-12-10 08:53:28,078 "GET /data/amc.png HTTP/1.1" 200 -
+2021-12-10 09:51:12,134 Stopping server
+2021-12-10 09:51:16,067 The Ancient Machine Codex is serving content at http://localhost:6473/
+2021-12-10 09:51:16,068 Launching browser to open http://localhost:6473/data/elgamal.html
+2021-12-10 09:51:16,775 "GET /data/elgamal.html HTTP/1.1" 200 -
+2021-12-10 09:51:17,399 "GET /favicon.ico HTTP/1.1" 404 -
+2021-12-10 09:51:19,814 "GET /data/elgamal.js HTTP/1.1" 200 -
