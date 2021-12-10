@@ -1,6 +1,3 @@
-alice: J'ai eu une idée lumineuse cette nuit, ça va révolutionner la crypto.
-alice: Mais oui, plutôt que tous ces trucs compliqués je mélange TOTP avec MT19937 : random.Random
-alice:
 from random import Random
 from hashlib import sha256
 from datetime import datetime
@@ -78,5 +75,3 @@ def recv_bob(s):
    mask=gimme(kab,n)
    data=strxor(msg,mask)
    return data
-
-alice: 4168203f

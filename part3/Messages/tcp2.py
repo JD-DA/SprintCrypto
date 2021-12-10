@@ -1,6 +1,3 @@
-alice: Bob, Bob ! J'ai conçu un super protocole !
-alice: DH + AES-GCM, aucun risque qu'on nous espionne !
-alice:
 from Crypto.Cipher import AES
 from Crypto.Hash import HMAC, SHA256
 from Crypto.Random.random import randint
@@ -80,4 +77,3 @@ def recv_bob(s):
    cipher=AES.new(kab, AES.MODE_GCM, mac_len=16, nonce=nonce)
    data=cipher.decrypt_and_verify(c,h)
    return data
-
