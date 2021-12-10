@@ -1,9 +1,22 @@
-Alice : y=<900bits>
+1
+Alice : y=<900bits> -> fichier y
 g=2
-n=900bits
+n=900bits -> generateur groupe
 
-Bob à un message pour Alice
-Dave : Ou est charlie ? je crois qu'il est a l'aquaponey
 Eve : fausse clé : y 900bits
     apporte là à bob, elle correspond au secret !
-    s = 900 bit
+    s = 900 bits
+    y->ey par eve
+    s-> es
+
+Bob :
+    Bob à un message pour Alice
+    Donne en echange ec1 et ec2 si trafiqué par eve, c1 et c2 sinon
+
+Retour vers Eve:
+    Succès !
+
+
+
+
+    Dave : Ou est charlie ? je crois qu'il est a l'aquaponey
