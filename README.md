@@ -80,7 +80,7 @@ correspondance = {
 }
 ```
 
-Une documentation sur comment repérrer 
+Une documentation sur comment obtenir les chunck 😮, avec une menace de mort si ont ne code pas l'utilitaire qui permet de les récupéré 😨 
 
 vendredi matin, rebelote notre sommeil n'as pas était en s'arrangeant. Surprise la machine a café ne sert pas de latté caramel.
 En arrivant à 8h du matin nous avons donc ocmmecncé notre fière journée en lisant nos mails et quelle ne fut pas notre surprise de découvrir, un mail nous souhaitant une bonne journée, accompagnée d'une douce musique nous permettant de découvrir le premier token de la journée encodée en base64 
@@ -91,12 +91,13 @@ Malgré les consignes du premiers mails, nous avons pourtant passés plusisieurs
 
 Par la suite, nous avons pu décrypter le token de diffie-helman à travers nos calculs puis par la force brute.
 
-En parralèle nous avons écouté tous les enregistrements mp3 de la partie 1 afin de résoudre les stations de nombres.
+En parralèle nous avons écouté tous les enregistrements mp3 de la partie 1 afin de résoudre les stations de nombres après avoir découvert le .py dans le rouble.png.
 Suites bugs présents dans ces exercices nous avons du reprendre ces exercices (3 et 4) à 2 reprises afin de completer entièrement cette partie. Ceci sera accomplie par recherche exaustive vers 17H pour l'exercice 3 et 19H pour l'exercice 4
 
 Concernant la suite des festivités nous avons résolus bien que tardivement l'exercice sur el-gamal en reccuperant les binaires directemenet dans la console puis en appliquant el-gamal afin de découvrir le fameux token
 
 Pour la fin de la journée nous nous fixés 2 objectifs : premièrement l'exercice sur le MD4 que nous avons vaincu par la force de nos neurones nous découvrons donc un token supplementaire qui nous a fait atteindre le nombre precieux de 24.
+
 
 
 
