@@ -94,3 +94,9 @@ Par la suite, nous avons pu décrypter le token de diffie-helman à travers nos 
 En parralèle nous avons écouté tous les enregistrements mp3 de la partie 1 afin de résoudre les stations de nombres.
 Suites bugs présents dans ces exercices nous avons du reprendre ces exercices (3 et 4) à 2 reprises afin de completer entièrement cette partie. Ceci sera accomplie par recherche exaustive vers 17H pour l'exercice 3 et 19H pour l'exercice 4
 
+Concernant la suite des festivités nous avons résolus bien que tardivement l'exercice sur el-gamal en reccuperant les binaires directemenet dans la console puis en appliquant el-gamal afin de découvrir le fameux token
+
+Pour la fin de la journée nous nous fixés 2 objectifs : premièrement l'exercice sur le MD4 que nous avons vaincu par la force de nos neurones nous découvrons donc un token supplementaire qui nous a fait atteindre le nombre precieux de 24.
+
+
+
