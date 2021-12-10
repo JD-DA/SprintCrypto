@@ -1,7 +1,7 @@
 from sys import argv,stdin
 from PIL import Image, ImageDraw, ImageFont
 
-file_name = "tram"
+file_name = "bugs"
 img = Image.open(f"{file_name}.png")
 width,height = img.size
 
