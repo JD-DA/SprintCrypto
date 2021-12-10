@@ -23,3 +23,25 @@ TypeError: unsupported operand type(s) for -: 'str' and 'str'
 2021-12-09 10:00:43,088 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
 2021-12-09 10:00:43,088 INFO Fin du traitement.
 /bin/sh: 1: filters/raseac: Permission denied
+2021-12-10 14:57:38,819 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-10 14:57:38,819 INFO Fin du traitement.
+2021-12-10 14:58:15,826 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-10 14:58:15,827 INFO Fin du traitement.
+2021-12-10 14:58:26,009 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac&alt=caesar
+2021-12-10 14:58:26,010 INFO Fin du traitement.
+2021-12-10 14:58:26,057 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac&alt=caesar
+2021-12-10 14:58:26,057 INFO Fin du traitement.
+2021-12-10 14:58:33,871 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac&alt=caesar
+2021-12-10 14:58:33,872 INFO Fin du traitement.
+2021-12-10 14:58:33,917 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac&alt=caesar
+2021-12-10 14:58:33,918 INFO Fin du traitement.
+2021-12-10 14:58:39,970 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac|raesac&alt=caesar
+2021-12-10 14:58:39,971 INFO Fin du traitement.
+2021-12-10 14:58:40,016 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac|raesac&alt=caesar
+2021-12-10 14:58:40,017 INFO Fin du traitement.
+2021-12-10 14:58:50,384 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac|raesac|raesac|raesac&alt=caesar
+2021-12-10 14:58:50,385 INFO Fin du traitement.
+2021-12-10 14:58:50,432 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac|raseac|raesac|raesac|raesac|raesac&alt=caesar
+2021-12-10 14:58:50,432 INFO Fin du traitement.
+2021-12-10 16:49:12,641 INFO Démarrage. Invoqué depuis /bateau?caesar|raseac&alt=caesar
+2021-12-10 16:49:12,641 INFO Fin du traitement.

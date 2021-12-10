@@ -44,8 +44,6 @@ def get_chunck(byte: bytes):
             break
         if(types==b"caKe"):
             print(payload)
-            for i in payload:
-                print(bytes.fromhex(i))
 
 
     
@@ -56,7 +54,7 @@ def get_chunck(byte: bytes):
 if __name__ == "__main__":
     bytes = b""
 
-    with open("rouble.png", "rb") as file:
+    with open("bugs.png", "rb") as file:
         for line in file.readlines():
             bytes += line
 
