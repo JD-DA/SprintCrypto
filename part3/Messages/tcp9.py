@@ -1,11 +1,3 @@
-alice: Bob, je ne suis pas sûr qu'on soit fait pour la crypto...
-bob: Mais Alice, ne dit pas ça ! On est nés avec la crypto ! Allez, regarde plutôt mon protocole !
-alice: Tu sais Bob, je suis sûre que là aussi il va y avoir une faille...
-bob: Hum... Non, je ne crois pas, j'ai pensé à tout, regarde : Alice choisit le secret, elle l'envoie à Bob...
-alice: avec RSA ?
-bob: Oui, et Bob lui, il montre à Alice qu'il a la bonne valeur en lui renvoyant.
-bob:
-
 from Crypto.Cipher import AES
 from Crypto.Hash import HMAC, SHA256
 from Crypto.Random.random import randint
@@ -111,4 +103,3 @@ def recv_bob(s):
    cipher=AES.new(kab, AES.MODE_CTR, nonce=nonce)
    data=cipher.decrypt(c)
    return data
-

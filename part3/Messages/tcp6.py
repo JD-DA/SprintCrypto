@@ -1,11 +1,3 @@
-alice: Bob, je ne suis pas sûr qu'on soit fait pour la crypto...
-bob: Mais Alice, ne dit pas ça ! On est nés avec la crypto ! Allez, regarde plutôt mon protocole !
-alice: Tu sais Bob, je suis sûre que là aussi il va y avoir une faille...
-bob: Hum... Non, je ne crois pas, j'ai pensé à tout, regarde : Alice choisit le secret, elle l'envoie à Bob...
-alice: avec RSA ?
-bob: Oui, et Bob lui, il montre à Alice qu'il a la bonne valeur en lui renvoyant.
-bob:
-
 from Crypto.Cipher import AES
 from Crypto.Hash import HMAC, SHA256
 from Crypto.Random.random import randint
@@ -32,7 +24,7 @@ def start_alice(s):
    "invoqué avant toute opération chez alice"
    global kab,kba
    # RSA
-   key=keys.alice_rsa
+   key=keys.rsa_alice
    na=key.n
    ea=key.e
    da=key.d
@@ -40,15 +32,13 @@ def start_alice(s):
    envoie(s,'alice',boi(ea))
    nb=iob(recoit(s))
    eb=iob(recoit(s))
-   n=min(na,nb)
-   a=randint(0,n)
+   a=randint(0,nb)
    x=pow(a,eb,nb)
    envoie(s,'alice',boi(x))
    y=iob(recoit(s))
    # secret partagé
    b=pow(y,da,na)
-   assert a==b
-   k=boi(a)
+   k=boi(a^b)
    # dérivation de clés
    h=HMAC.new(k, digestmod=SHA256)
    h.update(b'alice->bob')
@@ -58,24 +48,24 @@ def start_alice(s):
    kba=h.digest()
 def send_alice(s,data):
    "invoqué pour envoyer un message côté alice"
-   cipher=AES.new(kab, AES.MODE_CTR)
-   assert len(cipher.nonce)==8
-   c=cipher.encrypt(data)
-   msg=cipher.nonce+c
+   cipher=AES.new(kab, AES.MODE_CBC)
+   assert len(cipher.iv)==16
+   c=cipher.encrypt(pad(data,16))
+   msg=cipher.iv+c
    envoie(s,'alice',msg)
 def recv_alice(s):
    "invoqué pour recevoir un message côté alice"
    msg=recoit(s)
-   nonce=msg[:8]
-   c=msg[8:]
-   cipher=AES.new(kba, AES.MODE_CTR, nonce=nonce)
+   iv=msg[:16]
+   c=msg[16:]
+   cipher=AES.new(kba, AES.MODE_CBC, iv=iv)
    data=cipher.decrypt(c)
-   return data
+   return unpad(data,16)
 def start_bob(s):
    "invoqué avant toute opération chez bob"
    global kab,kba
    # RSA
-   key=keys.bob_rsa
+   key=keys.rsa_bob
    nb=key.n
    eb=key.e
    db=key.d
@@ -84,11 +74,12 @@ def start_bob(s):
    envoie(s,'bob',boi(nb))
    envoie(s,'bob',boi(eb))
    x=iob(recoit(s))
-   a=pow(x,db,nb)
-   y=pow(a,ea,na)
+   b=randint(0,na)
+   y=pow(b,ea,na)
    envoie(s,'bob',boi(y))
    # secret partagé
-   k=boi(a)
+   a=pow(x,db,nb)
+   k=boi(a^b)
    # dérivation de clés
    h=HMAC.new(k, digestmod=SHA256)
    h.update(b'alice->bob')
@@ -98,17 +89,16 @@ def start_bob(s):
    kba=h.digest()
 def send_bob(s,data):
    "invoqué pour envoyer un message côté alice"
-   cipher=AES.new(kba, AES.MODE_CTR)
-   assert len(cipher.nonce)==8
-   c=cipher.encrypt(data)
-   msg=cipher.nonce+c
+   cipher=AES.new(kba, AES.MODE_CBC)
+   assert len(cipher.iv)==16
+   c=cipher.encrypt(pad(data,16))
+   msg=cipher.iv+c
    envoie(s,'bob',msg)
 def recv_bob(s):
    "invoqué pour recevoir un message côté alice"
    msg=recoit(s)
-   nonce=msg[:8]
-   c=msg[8:]
-   cipher=AES.new(kab, AES.MODE_CTR, nonce=nonce)
+   iv=msg[:16]
+   c=msg[16:]
+   cipher=AES.new(kab, AES.MODE_CBC, iv=iv)
    data=cipher.decrypt(c)
-   return data
-
+   return unpad(data,16)

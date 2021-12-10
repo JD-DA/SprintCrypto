@@ -1,27 +1,10 @@
-alice: Bob, je ne suis pas sûr qu'on soit fait pour la crypto...
-bob: Mais Alice, ne dit pas ça ! On est nés avec la crypto ! Allez, regarde plutôt mon protocole !
-alice: Tu sais Bob, je suis sûre que là aussi il va y avoir une faille...
-bob: Hum... Non, je ne crois pas, j'ai pensé à tout, regarde : Alice choisit le secret, elle l'envoie à Bob...
-alice: avec RSA ?
-bob: Oui, et Bob lui, il montre à Alice qu'il a la bonne valeur en lui renvoyant.
-bob:
-
 from Crypto.Cipher import AES
 from Crypto.Hash import HMAC, SHA256
 from Crypto.Random.random import randint
-from Crypto.Util.Padding import pad, unpad
 import keys
+(g,n)=keys.MODP160
 kab=None
 kba=None
-def boi(i,n=None):
-    if n is not None:
-        return i.to_bytes(n,'big')
-    else:
-        h=hex(i)[2:]
-        if len(h)%2 == 1: h='0'+h
-        return bytes.fromhex(h)
-def iob(b):
-    return int.from_bytes(b,'big')
 def envoie(s,qui,quoi):
     s.send('{}: {}\n'.format(qui,quoi.hex()).encode())
 def recoit(s):
@@ -31,24 +14,13 @@ def recoit(s):
 def start_alice(s):
    "invoqué avant toute opération chez alice"
    global kab,kba
-   # RSA
-   key=keys.alice_rsa
-   na=key.n
-   ea=key.e
-   da=key.d
-   envoie(s,'alice',boi(na))
-   envoie(s,'alice',boi(ea))
-   nb=iob(recoit(s))
-   eb=iob(recoit(s))
-   n=min(na,nb)
+   # DH
    a=randint(0,n)
-   x=pow(a,eb,nb)
-   envoie(s,'alice',boi(x))
-   y=iob(recoit(s))
+   x=pow(g,a,n)
+   envoie(s,'alice',x.to_bytes(128,'big'))
+   y=int.from_bytes(recoit(s),'big')
    # secret partagé
-   b=pow(y,da,na)
-   assert a==b
-   k=boi(a)
+   k=pow(y,a,n).to_bytes(128,'big')
    # dérivation de clés
    h=HMAC.new(k, digestmod=SHA256)
    h.update(b'alice->bob')
@@ -58,7 +30,7 @@ def start_alice(s):
    kba=h.digest()
 def send_alice(s,data):
    "invoqué pour envoyer un message côté alice"
-   cipher=AES.new(kab, AES.MODE_CTR)
+   cipher=AES.new(kab, AES.MODE_CTR, nonce=keys.nonce()[:8])
    assert len(cipher.nonce)==8
    c=cipher.encrypt(data)
    msg=cipher.nonce+c
@@ -74,21 +46,13 @@ def recv_alice(s):
 def start_bob(s):
    "invoqué avant toute opération chez bob"
    global kab,kba
-   # RSA
-   key=keys.bob_rsa
-   nb=key.n
-   eb=key.e
-   db=key.d
-   na=iob(recoit(s))
-   ea=iob(recoit(s))
-   envoie(s,'bob',boi(nb))
-   envoie(s,'bob',boi(eb))
-   x=iob(recoit(s))
-   a=pow(x,db,nb)
-   y=pow(a,ea,na)
-   envoie(s,'bob',boi(y))
+   # DH
+   b=randint(0,n)
+   y=pow(g,b,n)
+   envoie(s,'bob',y.to_bytes(128,'big'))
+   x=int.from_bytes(recoit(s),'big')
    # secret partagé
-   k=boi(a)
+   k=pow(x,b,n).to_bytes(128,'big')
    # dérivation de clés
    h=HMAC.new(k, digestmod=SHA256)
    h.update(b'alice->bob')
@@ -98,7 +62,7 @@ def start_bob(s):
    kba=h.digest()
 def send_bob(s,data):
    "invoqué pour envoyer un message côté alice"
-   cipher=AES.new(kba, AES.MODE_CTR)
+   cipher=AES.new(kba, AES.MODE_CTR, nonce=keys.nonce()[:8])
    assert len(cipher.nonce)==8
    c=cipher.encrypt(data)
    msg=cipher.nonce+c
@@ -111,4 +75,3 @@ def recv_bob(s):
    cipher=AES.new(kab, AES.MODE_CTR, nonce=nonce)
    data=cipher.decrypt(c)
    return data
-
