@@ -1,0 +1,3 @@
+"Q2V0dGUgaW1hZ2UgZXN0IGF1c3NpIHVuIGZpY2hpZXIgQU1DICEgVm91cyBwb3V2ZXogbGUgbGFuY2VyIGF2ZWMgJCAuL3J1bm1lLnB5eiAtbyBhbGxnYW1lLnBuZyBzZXJ2ZSBkYXRhL2VsZ2FtYWwuaHRtbAo="
+
+Cette image est aussi un fichier AMC ! Vous pouvez le lancer avec $ ./runme.pyz -o allgame.png serve data/elgamal.html

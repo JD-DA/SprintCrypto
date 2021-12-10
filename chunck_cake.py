@@ -53,12 +53,12 @@ def get_chunck(byte: bytes):
 
     
 
+if __name__ == "__main__":
+    bytes = b""
 
-bytes = b""
+    with open("./part3/allgame.png", "rb") as file:
+        for line in file.readlines():
+            bytes += line
 
-with open("houston.png", "rb") as file:
-    for line in file.readlines():
-        bytes += line
-
-for chunck in get_chunck(bytes):
-    pass
+    for chunck in get_chunck(bytes):
+        pass
