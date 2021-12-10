@@ -80,5 +80,17 @@ correspondance = {
 }
 ```
 
+Une documentation sur comment repérrer 
+
 vendredi matin, rebelote notre sommeil n'as pas était en s'arrangeant. Surprise la machine a café ne sert pas de latté caramel.
+En arrivant à 8h du matin nous avons donc ocmmecncé notre fière journée en lisant nos mails et quelle ne fut pas notre surprise de découvrir, un mail nous souhaitant une bonne journée, accompagnée d'une douce musique nous permettant de découvrir le premier token de la journée encodée en base64 
+
+Nous avons alors continué notre chemin en débutant l'étape 3 par le décryptage des echanges entre bob et alice. C'est ainsi, nous trouvons alors un token dans le contenu de celui-ci ainsi qu'une image png que nous extrairons par la suite afin d'y découvrir un chunck-cake nous donnant une informations essentielles à la suite de notre projet : LE JEU
+
+Malgré les consignes du premiers mails, nous avons pourtant passés plusisieurs heures sur le jeu afin d'écouter l'entièreté de la bande sonore ainsi que de découvrir le token offert par dave et celui dissimulé par EVE.
+
+Par la suite, nous avons pu décrypter le token de diffie-helman à travers nos calculs puis par la force brute.
+
+En parralèle nous avons écouté tous les enregistrements mp3 de la partie 1 afin de résoudre les stations de nombres.
+Suites bugs présents dans ces exercices nous avons du reprendre ces exercices (3 et 4) à 2 reprises afin de completer entièrement cette partie. Ceci sera accomplie par recherche exaustive vers 17H pour l'exercice 3 et 19H pour l'exercice 4
 
